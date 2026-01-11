@@ -35,29 +35,19 @@
             class="group flex items-center space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-105"
           >
             <FullLogoVertical
-              class="hidden h-10 lg:h-12 dark:block transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:drop-shadow-lg"
+              class="hidden h-14 w-auto shrink-0 dark:block transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:drop-shadow-lg"
             />
             <FullLogoVerticalDarkText
-              class="h-10 lg:h-12 dark:hidden transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:drop-shadow-lg"
+              class="h-14 w-auto shrink-0 dark:hidden transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:drop-shadow-lg"
             />
           </a>
 
           <!-- App description or tagline could go here -->
           <p class="text-gray-600 dark:text-gray-400 text-center lg:text-start leading-relaxed">
-            Empowering teams with modern agile tools for better collaboration and delivery.
+            Efficient planning and retrospectives for Team Cosmos.
           </p>
 
-          <!-- GitHub link with icon -->
-          <div class="flex items-center space-x-2 rtl:space-x-reverse">
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-lg bg-gray-200 dark:bg-gray-800 transition-colors duration-300 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-900/30"
-            >
-              <GithubIcon class="w-6 h-6 text-gray-600 dark:text-gray-400" />
-            </div>
-            <a href={RepoURL} class={footerLinkClasses} target="_blank">
-              {$LL.githubRepository()}
-            </a>
-          </div>
+          <!-- GitHub section removed -->
         </div>
 
         <!-- Navigation links -->
@@ -69,35 +59,11 @@
           </h3>
           <nav>
             <ul class="grid grid-cols-2 lg:grid-cols-1 gap-3 text-center lg:text-start">
-              {#if SubscriptionsEnabled}
-                <li>
-                  <a href={appRoutes.subscriptionPricing} class="{navLinkClasses} block py-1"> Pricing </a>
-                </li>
-              {/if}
               <li>
-                <a href="{RepoURL}/blob/main/docs/GUIDE.md" target="_blank" class="{navLinkClasses} block py-1">
-                  {$LL.userGuide()}
-                </a>
+                <span class="text-gray-500 dark:text-gray-400 block py-1">Confluence (coming soon)</span>
               </li>
               <li>
-                <a href={appRoutes.openSource} class="{navLinkClasses} block py-1">
-                  {$LL.openSource()}
-                </a>
-              </li>
-              <li>
-                <a href={appRoutes.privacyPolicy} class="{navLinkClasses} block py-1">
-                  {$LL.privacyPolicy()}
-                </a>
-              </li>
-              <li>
-                <a href={appRoutes.termsConditions} class="{navLinkClasses} block py-1">
-                  {$LL.termsConditions()}
-                </a>
-              </li>
-              <li>
-                <a href={appRoutes.support} class="{navLinkClasses} block py-1">
-                  {$LL.support()}
-                </a>
+                <span class="text-gray-500 dark:text-gray-400 block py-1">Jira (coming soon)</span>
               </li>
             </ul>
           </nav>
@@ -113,10 +79,7 @@
           <div class="text-gray-500 dark:text-gray-400 font-rajdhani text-center lg:text-start">
             <div class="space-y-1">
               <div>
-                {@html $LL.footerAuthoredBy({
-                  authorOpen: `<a href="http://stevenweathers.com" class="${footerLinkClasses}" target="_blank">`,
-                  authorClose: `</a>`,
-                })}
+                {$LL.footerAuthoredBy()}
               </div>
             </div>
           </div>

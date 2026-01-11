@@ -9,7 +9,7 @@
   onMount(() => window.scrollTo(0, 0));
 
   const heroData = {
-    title: `Transform Ideas into Impact with <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-thunder to-orange-500">Thunderdome</span> Story Mapping`,
+    title: `Transform Ideas into Impact with <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-thunder to-orange-500">Cosmos</span> Story Mapping`,
     subtitle:
       'Turn complex product visions into clear, actionable user journeys that your entire team can rally behind.',
     primaryCta: 'Start Mapping for Free',
@@ -26,7 +26,7 @@
       'Misaligned team priorities',
       'Feature confusion',
     ],
-    solutionTitle: 'With Thunderdome Story Mapping',
+    solutionTitle: 'With Cosmos Story Mapping',
     solutionItems: [
       'Complete user journey visualization',
       'Strategic feature prioritization',
@@ -81,7 +81,7 @@
   const benefitsData = {
     title: "Join Teams Who've Transformed Their Product Development",
     description:
-      'From startups to enterprise teams, product managers are using Thunderdome to turn chaotic backlogs into clear roadmaps that drive real results.',
+      'Cosmos helps teams turn chaotic backlogs into clear roadmaps that drive real results.',
     benefits: [
       {
         title: 'User Journey Clarity',

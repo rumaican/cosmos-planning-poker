@@ -9,7 +9,7 @@
   onMount(() => window.scrollTo(0, 0));
 
   const heroData = {
-    title: `Turn Retrospectives into Real Progress with <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-thunder to-orange-500">Thunderdome</span>`,
+    title: `Turn Retrospectives into Real Progress with <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-thunder to-orange-500">Cosmos</span>`,
     subtitle:
       'Stop going through the motions. Start building teams that learn, adapt, and continuously improve with every sprint.',
     primaryCta: 'Start Your First Retro',
@@ -26,7 +26,7 @@
       'Uncomfortable silence or blame',
       'Generic formats that feel stale',
     ],
-    solutionTitle: 'With Thunderdome Retrospectives',
+    solutionTitle: 'With Cosmos Retrospectives',
     solutionItems: [
       'Fresh insights every retrospective',
       'Trackable action items with follow-through',
@@ -83,7 +83,7 @@
   const benefitsData = {
     title: "Transform Your Team's Continuous Improvement",
     description:
-      'Agile teams using Thunderdome retrospectives report stronger team bonds, faster problem-solving, and measurable process improvements.',
+      'Cosmos retrospectives help teams build stronger bonds, solve problems faster, and achieve measurable process improvements.',
     benefits: [
       {
         title: 'Psychological Safety',

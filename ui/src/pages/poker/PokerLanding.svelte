@@ -9,9 +9,8 @@
   onMount(() => window.scrollTo(0, 0));
 
   const heroData = {
-    title: `Turn Estimation Chaos into Team Consensus with <span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-thunder to-orange-500">Thunderdome</span> Planning Poker`,
-    subtitle:
-      'Transform wild guesses and estimation bias into data-driven story points. Build accurate backlogs that help your team plan realistic sprints.',
+    title: 'Team Cosmos, Aligned',
+    subtitle: 'Estimate together. Reflect honestly. Move forward.',
     primaryCta: 'Start Estimating Smart',
     secondaryCta: 'See How It Works',
   };
@@ -26,7 +25,7 @@
       'Unrealistic commitments lead to burnout',
       'Team members afraid to disagree',
     ],
-    solutionTitle: 'With Thunderdome Planning Poker',
+    solutionTitle: 'With Cosmos Planning Poker',
     solutionItems: [
       "Every team member's input counts equally",
       'Independent thinking before consensus',
@@ -83,7 +82,7 @@
   const benefitsData = {
     title: 'Build Accurate Story Points Your Team Can Trust',
     description:
-      'Teams using Thunderdome Planning Poker report more consistent story pointing, better velocity tracking, and improved sprint planning confidence.',
+      'Cosmos Planning Poker helps teams achieve consistent story pointing and improved sprint planning confidence.',
     benefits: [
       {
         title: 'Story Point Accuracy',

@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: thunderdome
+    env: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: APP_DOMAIN
+        fromPlaceholder: RENDER_EXTERNAL_HOSTNAME_OR_CUSTOM_DOMAIN
+      - key: COOKIE_SECURE
+        value: true
+      - key: COOKIE_HASHKEY
+        generateValue: true
+      - key: DB_HOST
+        fromDatabase:
+          name: thunderdome-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: thunderdome-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: thunderdome-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: thunderdome-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: thunderdome-db
+          property: password
+      - key: DB_SSLMODE
+        value: require
+    # Admin email to automatically setup an admin user (Optional)
+    #   - key: ADMIN_EMAIL
+    #     value: your-email@example.com
+
+databases:
+  - name: thunderdome-db
+    plan: free
+    databaseName: thunderdome
+    user: thor

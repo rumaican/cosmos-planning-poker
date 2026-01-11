@@ -5,14 +5,14 @@
   import type { Team } from '../types/team';
   import PokerGame from './poker/PokerGame.svelte';
   import type { Retro } from '../types/retro';
-  import type { Storyboard } from '../types/storyboard';
+
   import { user } from '../stores';
   import { onMount } from 'svelte';
   import BoxList from '../components/BoxList.svelte';
   import PageLayout from '../components/PageLayout.svelte';
   import {
     ArrowRight,
-    LayoutDashboard,
+
     RefreshCcw,
     Users,
     Vote,
@@ -40,13 +40,12 @@
   let gameCount: number = $state(0);
   let retros: Retro[] = $state([]);
   let retroCount: number = $state(0);
-  let storyboards: Storyboard[] = $state([]);
-  let storyboardCount: number = $state(0);
+
   let selectedTeam: Team | null = $state(null);
   let showTeamDropdown: boolean = $state(false);
 
   function loadDashboardData() {
-    Promise.any([loadTeams(), loadGames(), loadRetros(), loadStoryboards()]);
+    Promise.any([loadTeams(), loadGames(), loadRetros()]);
   }
 
   async function loadTeams() {
@@ -107,25 +106,7 @@
     }
   }
 
-  async function loadStoryboards() {
-    if (!AppConfig.FeatureStoryboard) {
-      return;
-    }
-    try {
-      const prefix = selectedTeam ? `/api/teams/${selectedTeam.id}/storyboards` : `/api/users/${$user.id}/storyboards`;
-      xfetch(`${prefix}?limit=4&offset=0`)
-        .then(res => res.json())
-        .then(function (result) {
-          storyboards = result.data;
-          storyboardCount = result.meta.count;
-        })
-        .catch(function (error) {
-          notifications.danger($LL.getStoryboardsErrorMessage());
-        });
-    } catch (error) {
-      console.error('Error loading storyboards:', error);
-    }
-  }
+
 
   function selectTeam(team: Team | null) {
     selectedTeam = team;
@@ -133,7 +114,6 @@
     // Reload data with new team filter
     loadGames();
     loadRetros();
-    loadStoryboards();
   }
 
   function toggleTeamDropdown() {
@@ -305,7 +285,7 @@
           </div>
         </div>
       {:else}
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 grid-rows-1">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 grid-rows-1">
           <!-- Poker Games Section -->
           {#if AppConfig.FeaturePoker}
             <section class="flex flex-col h-full">
@@ -487,95 +467,7 @@
             </section>
           {/if}
 
-          <!-- Storyboards Section -->
-          {#if AppConfig.FeatureStoryboard}
-            <section class="flex flex-col h-full">
-              <div class="flex items-center justify-between mb-6 flex-shrink-0">
-                <div class="flex items-center space-x-3">
-                  <div
-                    class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/25"
-                  >
-                    <LayoutDashboard class="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
-                      {$LL.myStoryboards()}
-                    </h2>
-                    <p class="text-slate-600 dark:text-slate-400">
-                      {$LL.agileStoryMapping()}
-                    </p>
-                  </div>
-                </div>
-              </div>
 
-              {#if storyboardCount > 0}
-                <div
-                  class="rounded-2xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm p-6 ring-1 ring-slate-200/50 dark:ring-slate-700/50 flex-1 flex flex-col"
-                >
-                  <div class="flex-1">
-                    <BoxList
-                      items={storyboards}
-                      itemType="storyboard"
-                      showOwnerName={true}
-                      ownerNameField="teamName"
-                      pageRoute={appRoutes.storyboard}
-                      joinBtnText={$LL.joinStoryboard()}
-                    />
-                  </div>
-
-                  {#if storyboardCount > 4}
-                    <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
-                      <a
-                        href={appRoutes.storyboards}
-                        class="group w-full flex items-center justify-between p-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 shadow-sm hover:shadow-md transition-all"
-                      >
-                        <div class="flex items-center space-x-3">
-                          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700">
-                            <LayoutDashboard class="h-4 w-4 text-gray-600 dark:text-gray-400" />
-                          </div>
-                          <div>
-                            <div class="font-semibold text-gray-900 dark:text-white">
-                              {$LL.viewAllStoryboards()}
-                            </div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400">
-                              {$LL.totalStoryboards({
-                                total: storyboardCount,
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                        <ArrowRight
-                          class="h-5 w-5 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 group-hover:translate-x-1 transition-all"
-                        />
-                      </a>
-                    </div>
-                  {/if}
-                </div>
-              {:else}
-                <div
-                  class="rounded-2xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm p-6 ring-1 ring-slate-200/50 dark:ring-slate-700/50 flex-1 flex items-center justify-center"
-                >
-                  <div class="text-center">
-                    <div
-                      class="mx-auto h-24 w-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-6"
-                    >
-                      <LayoutDashboard class="h-12 w-12 text-slate-400" />
-                    </div>
-                    <p class="text-xl text-slate-600 dark:text-slate-400 mb-2">
-                      {selectedTeam
-                        ? $LL.noStoryboardsFoundForTeam({
-                            teamName: selectedTeam.name,
-                          })
-                        : $LL.noStoryboardsFound()}
-                    </p>
-                    <p class="text-sm text-slate-500 dark:text-slate-500">
-                      {selectedTeam ? $LL.trySelectingDifferentTeamForStoryboards() : $LL.startFirstStoryboard()}
-                    </p>
-                  </div>
-                </div>
-              {/if}
-            </section>
-          {/if}
         </div>
       {/if}
     </div>

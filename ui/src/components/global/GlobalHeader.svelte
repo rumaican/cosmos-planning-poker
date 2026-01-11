@@ -99,10 +99,10 @@
       <div class="flex items-center">
         <a href={appRoutes.landing} class="group flex items-center transition-transform duration-300 hover:scale-105">
           <DomeLogo
-            class="hidden dark:inline-block h-8 md:h-10 lg:h-12 transition-all duration-300 group-hover:drop-shadow-lg"
+            class="hidden dark:inline-block h-12 md:h-14 w-auto shrink-0 transition-all duration-300 group-hover:drop-shadow-lg"
           />
           <DomeLogoLight
-            class="inline-block dark:hidden h-8 md:h-10 lg:h-12 transition-all duration-300 group-hover:drop-shadow-lg"
+            class="inline-block dark:hidden h-12 md:h-14 w-auto shrink-0 transition-all duration-300 group-hover:drop-shadow-lg"
           />
         </a>
       </div>
@@ -124,11 +124,7 @@
             {$LL.retros()}
           </a>
         {/if}
-        {#if FeatureStoryboard}
-          <a href={appRoutes.storyboards} class={currentPage === 'storyboards' ? activePageClass : pageClass}>
-            {$LL.storyboards()}
-          </a>
-        {/if}
+
         {#if $user.name && $user.rank !== 'GUEST' && $user.rank !== 'PRIVATE'}
           <a href={appRoutes.teams} class={currentPage === 'teams' ? activePageClass : pageClass}>
             {$LL.teams()}
@@ -226,17 +222,7 @@
             {$LL.retros()}
           </a>
         {/if}
-        {#if FeatureStoryboard}
-          <a
-            href={appRoutes.storyboards}
-            class="{currentPage === 'storyboards'
-              ? mobileActiveClass
-              : mobilePageClass} font-rajdhani uppercase tracking-wide"
-            onclick={() => (showMobileMenu = false)}
-          >
-            {$LL.storyboards()}
-          </a>
-        {/if}
+
         {#if $user.name && $user.rank !== 'GUEST' && $user.rank !== 'PRIVATE'}
           <a
             href={appRoutes.teams}
