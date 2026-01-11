@@ -125,6 +125,10 @@ func serve(embedUseOS bool) {
 		DefaultEstimationScale: c.Config.AllowedPointValues,
 	}, logger, true)
 
+	if err := d.MigrateUp(); err != nil {
+		logger.Fatal("error running migrations", zap.Error(err))
+	}
+
 	userService := &user.Service{DB: d.DB, Logger: logger}
 	apkService := &apikey.Service{DB: d.DB, Logger: logger}
 	alertService := &alert.Service{DB: d.DB, Logger: logger}
