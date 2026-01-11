@@ -32,10 +32,10 @@
     <div class="container mx-auto px-4 py-16">
       <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Team Cosmos, Aligned
+          Team <span class="text-yellow-thunder">Cosmos</span>, Aligned
         </h1>
-        <p class="max-w-4xl mx-auto text-xl sm:text-2xl text-blue-100 mb-8">
-          Estimate together. Reflect honestly. Move forward.
+        <p class="max-w-4xl mx-auto text-xl sm:text-2xl text-white/80 mb-8">
+          Clear estimates. Honest retros. Forward momentum.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
           {#if $user.id}

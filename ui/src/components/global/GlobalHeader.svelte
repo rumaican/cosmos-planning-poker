@@ -8,7 +8,7 @@
   import ThemeSelector from './ThemeSelector.svelte';
   import NavUserMenu from './NavUserMenu.svelte';
   import { ArrowRight, Menu, X } from 'lucide-svelte';
-  import LocaleMenu from './LocaleMenu.svelte';
+  // import LocaleMenu from './LocaleMenu.svelte';
   import DomeLogo from '../logos/DomeLogo.svelte';
   import DomeLogoLight from '../logos/DomeLogoLight.svelte';
 
@@ -147,7 +147,7 @@
         {#if !$user.id}
           <!-- Guest User Controls -->
           <div class="hidden sm:flex items-center space-x-3 rtl:space-x-reverse">
-            <LocaleMenu selectedLocale={$locale} update={(l: Locales) => setupI18n(l)} />
+            <!-- <LocaleMenu selectedLocale={$locale} update={(l: Locales) => setupI18n(l)} /> -->
             <ThemeSelector />
             {#if HeaderAuthEnabled}
               <button
@@ -266,7 +266,7 @@
           <div class="flex items-center justify-between">
             <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Language & Theme</span>
             <div class="flex items-center space-x-3 rtl:space-x-reverse">
-              <LocaleMenu selectedLocale={$locale} update={(l: Locales) => setupI18n(l)} />
+              <!-- <LocaleMenu selectedLocale={$locale} update={(l: Locales) => setupI18n(l)} /> -->
               <ThemeSelector />
             </div>
           </div>
